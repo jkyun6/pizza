@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: PizzaOrderManagement
+  labels:
+    app: PizzaOrderManagement
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: PizzaOrderManagement
+  template:
+    metadata:
+      labels:
+        app: PizzaOrderManagement
+    spec:
+      containers:
+        - name: PizzaOrderManagement
+          image: username/PizzaOrderManagement:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5

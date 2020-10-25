@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/Paymentmanagement/pom.xml" />
+        <option value="$PROJECT_DIR$/MarketingManagement/pom.xml" />
+        <option value="$PROJECT_DIR$/PizzaOrderManagement/pom.xml" />
+        <option value="$PROJECT_DIR$/NotificationManagement/pom.xml" />
+        <option value="$PROJECT_DIR$/SatisfactionManagement/pom.xml" />
+        <option value="$PROJECT_DIR$/OrderDeliveryManagement/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" project-jdk-name="14" project-jdk-type="JavaSDK" />
+</project>

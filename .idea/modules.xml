@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MarketingManagement/MarketingManagement.iml" filepath="$PROJECT_DIR$/MarketingManagement/MarketingManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/NotificationManagement/NotificationManagement.iml" filepath="$PROJECT_DIR$/NotificationManagement/NotificationManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OrderDeliveryManagement/OrderDeliveryManagement.iml" filepath="$PROJECT_DIR$/OrderDeliveryManagement/OrderDeliveryManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Paymentmanagement/Paymentmanagement.iml" filepath="$PROJECT_DIR$/Paymentmanagement/Paymentmanagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PizzaOrderManagement/PizzaOrderManagement.iml" filepath="$PROJECT_DIR$/PizzaOrderManagement/PizzaOrderManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SatisfactionManagement/SatisfactionManagement.iml" filepath="$PROJECT_DIR$/SatisfactionManagement/SatisfactionManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway/boot-camp-gateway.iml" filepath="$PROJECT_DIR$/gateway/boot-camp-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pizza.iml" filepath="$PROJECT_DIR$/.idea/pizza.iml" />
+    </modules>
+  </component>
+</project>
