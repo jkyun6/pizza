@@ -8,6 +8,7 @@ public class OrderCanceled extends AbstractEvent {
     private Integer price;
     private String paymentMethod;
     private String notificationType;
+    private String state;
 
     public Long getId() {
         return id;
@@ -40,4 +41,11 @@ public class OrderCanceled extends AbstractEvent {
 
     public String getNotificationType() { return notificationType; }
     public void setNotificationType(String notificationType) { this.notificationType = notificationType; }
+
+    public String getState() {
+        return state;
+    }
+    public void setState(String state) {
+        this.state = state;
+    }
 }
