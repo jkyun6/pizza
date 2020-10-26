@@ -99,3 +99,39 @@
    - 랭기지 레벨 또는 데이터베이스 레벨
 ## Self-healing (Liveness Probe)
    - 리스타트되도록 증적 캡쳐	
+   
+   
+## 자주 사용하는 명령어
+### Pizza Order 사용법
+   주문
+   http POST localhost:8081/pizzaOrders customerId=10 state="PLACE" menuOption="" price=10000 paymentMethod="CreditCard" address="The`wellI007Ho"
+   
+   주문 취소
+   http PATCH localhost:8081/pizzaOrders/1 state="CANCEL"
+   
+   
+### Payment 사용법
+   
+   
+   
+### OrderDelivery 사용법
+   피자제작시작 입력
+   http PATCH localhost:8083/orderDeliveries/1 orderState="PizzaProductionStarted"
+   
+   배송출발 입력
+   http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryStarted"
+   
+   배송완료 입력
+   http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryCompleted"
+   
+   
+   
+### kafka 사용법
+   kafka폴더 이동.
+   1. zookeeper 실행
+   .\bin\windows\zookeeper-server-start.bat ..\..\config\zookeeper.properties
+   2. kafka server 실행
+   .\bin\windows\kafka-server-start.bat ..\..\config\server.properties
+   
+   메세지 확인하기
+   kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic pizza --from-beginning
