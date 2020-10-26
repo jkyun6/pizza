@@ -77,3 +77,24 @@
 
 # deployment.yaml 의 readiness probe 의 설정:
 
+# 평가항목
+## Saga
+## CQRS
+   - view 스티커 구현
+   - 주문 post 마이페이지 레코드 추가
+## Correlation
+   - Correlation key saga cqrs 자동 득점
+## Req/Resp
+   - 
+## Gateway
+## Deploy/Pipeline (필수 아님, 운영에는 반영되어야 함)
+## Circuit Breaker 
+## Autoscale (HPA)
+## Zero-downtime deploy (Readiness Probe)
+   - 배포가 될 때 무정지로... 부하 중에 새로운 버전으로....
+## Config Map / Persistence Volume (둘 중에 하나)
+   - 이뮤터블 이미지, 쿠버네티스 콘피그 맵
+## Polyglot
+   - 랭기지 레벨 또는 데이터베이스 레벨
+## Self-healing (Liveness Probe)
+   - 리스타트되도록 증적 캡쳐	
