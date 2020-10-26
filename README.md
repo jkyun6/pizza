@@ -78,6 +78,38 @@
 ![image](https://user-images.githubusercontent.com/34112237/97233785-dcf60f00-1822-11eb-9583-abc3d6ae706e.png)
 
 # 구현
+## 서비스 호출
+### Pizza Order 사용법
+주문
+```
+http POST localhost:8081/pizzaOrders customerId=10 state="PLACE" menuOption="" price=10000 paymentMethod="CreditCard" address="ThewellI007Ho"
+```
+주문 취소
+```
+http PATCH localhost:8081/pizzaOrders/1 state="CANCEL"
+```
+   
+### Payment 사용법
+
+
+### OrderDelivery 사용법
+피자제작시작 입력
+```
+http PATCH localhost:8083/orderDeliveries/1 orderState="PizzaProductionStarted"
+```
+배송출발 입력
+```
+http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryStarted"
+```
+배송완료 입력
+```
+http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryCompleted"
+```
+
+### 주문 취소
+```
+http 
+```
 
 ## DDD의 적용
 간략한 설명 작성
@@ -171,37 +203,9 @@ orderCanceled에서 paymentCancel로 pub 후 PaymentHistory 변경
    - 리스타트되도록 증적 캡쳐	
    
    
-## 자주 사용하는 명령어
-### Pizza Order 사용법
-주문
-```
-http POST localhost:8081/pizzaOrders customerId=10 state="PLACE" menuOption="" price=10000 paymentMethod="CreditCard" address="ThewellI007Ho"
-```
-주문 취소
-```
-http PATCH localhost:8081/pizzaOrders/1 state="CANCEL"
-```
+# 자주 사용하는 명령어
    
-### Payment 사용법
-   
-   
-   
-
-### OrderDelivery 사용법
-피자제작시작 입력
-```
-http PATCH localhost:8083/orderDeliveries/1 orderState="PizzaProductionStarted"
-```
-배송출발 입력
-```
-http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryStarted"
-```
-배송완료 입력
-```
-http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryCompleted"
-```
-   
-### kafka 사용법
+## kafka 사용법
 kafka폴더 이동.
 
 1. zookeeper 실행
