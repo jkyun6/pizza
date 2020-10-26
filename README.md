@@ -79,6 +79,7 @@
 
 # 평가항목
 ## Saga
+ orderCanceled에서 paymentCancel로 pub 후 PaymentHistory 변경
 ## CQRS
    - view 스티커 구현
    - 주문 post 마이페이지 레코드 추가
