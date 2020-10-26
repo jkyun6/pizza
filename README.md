@@ -74,10 +74,8 @@
     1. 주문과 조회를 분리하여 시스템 성능을 향상시킨다.  (CQRS) (OK)
     1. 배달상태가 바뀔때마다 카톡 등으로 알림을 줄 수 있어야 한다  Event driven (OK)
 
-### 모델 수정
-
-
 ## 헥사고날 아키텍처 다이어그램 도출
+![image](https://user-images.githubusercontent.com/34112237/97233785-dcf60f00-1822-11eb-9583-abc3d6ae706e.png)
 
 
 # 구현
