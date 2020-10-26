@@ -77,101 +77,142 @@
 ## 헥사고날 아키텍처 다이어그램 도출
 ![image](https://user-images.githubusercontent.com/34112237/97233785-dcf60f00-1822-11eb-9583-abc3d6ae706e.png)
 
-
 # 구현
 
 ## DDD의 적용
+간략한 설명 작성
+```
+소스코드 붙여넣기
+```
 
 ## 폴리글랏 퍼시스턴스
-
-
-# PizzaOrderManagement
-
-
-# PaymentManagement
-
-
-# OrderDeliveryManagement
-
+간략한 설명 작성
+```
+소스코드 붙여넣기
+```
 
 ## 폴리글랏 프로그래밍
-
+간략한 설명 작성
+```
+소스코드 붙여넣기
+```
 
 ## 동기식 호출과 Fallback 처리
-
+간략한 설명 작성
+```
+소스코드 붙여넣기
+```
 
 ## 비동기식 호출 / 시간적 디커플링 / 장애격리 / 최종 (Eventual) 일관성 테스트
-
+간략한 설명 작성
+```
+소스코드 붙여넣기
+```
 # 운영
 
 ## CI/CD 설정
-
+간략한 설명 작성
+```
+소스코드 붙여넣기
+```
 
 ## 동기식 호출 / 서킷 브레이킹 / 장애 격리
+간략한 설명 작성
+```
+소스코드 붙여넣기
+```
 
 ### 오토 스케일 아웃
-
+간략한 설명 작성
+```
+소스코드 붙여넣기
+```
 
 ## 무정지 배포
-
-
+간략한 설명 작성
+```
+소스코드 붙여넣기
+```
 # deployment.yaml 의 readiness probe 의 설정:
+
 
 # 평가항목
 ## Saga
- orderCanceled에서 paymentCancel로 pub 후 PaymentHistory 변경
+orderCanceled에서 paymentCancel로 pub 후 PaymentHistory 변경
+
 ## CQRS
-   - view 스티커 구현
-   - 주문 post 마이페이지 레코드 추가
+- view 스티커 구현
+- 주문 post 마이페이지 레코드 추가
+
 ## Correlation
-   - Correlation key saga cqrs 자동 득점
+- Correlation key saga cqrs 자동 득점
+
 ## Req/Resp
-   - 
+- 
+
 ## Gateway
+
 ## Deploy/Pipeline (필수 아님, 운영에는 반영되어야 함)
+
 ## Circuit Breaker 
+
 ## Autoscale (HPA)
+
 ## Zero-downtime deploy (Readiness Probe)
-   - 배포가 될 때 무정지로... 부하 중에 새로운 버전으로....
+- 배포가 될 때 무정지로... 부하 중에 새로운 버전으로....
+
 ## Config Map / Persistence Volume (둘 중에 하나)
    - 이뮤터블 이미지, 쿠버네티스 콘피그 맵
+
 ## Polyglot
    - 랭기지 레벨 또는 데이터베이스 레벨
+
 ## Self-healing (Liveness Probe)
    - 리스타트되도록 증적 캡쳐	
    
    
 ## 자주 사용하는 명령어
 ### Pizza Order 사용법
-   주문
-   http POST localhost:8081/pizzaOrders customerId=10 state="PLACE" menuOption="" price=10000 paymentMethod="CreditCard" address="The`wellI007Ho"
-   
-   주문 취소
-   http PATCH localhost:8081/pizzaOrders/1 state="CANCEL"
-   
+주문
+```
+http POST localhost:8081/pizzaOrders customerId=10 state="PLACE" menuOption="" price=10000 paymentMethod="CreditCard" address="ThewellI007Ho"
+```
+주문 취소
+```
+http PATCH localhost:8081/pizzaOrders/1 state="CANCEL"
+```
    
 ### Payment 사용법
    
    
    
+
 ### OrderDelivery 사용법
-   피자제작시작 입력
-   http PATCH localhost:8083/orderDeliveries/1 orderState="PizzaProductionStarted"
-   
-   배송출발 입력
-   http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryStarted"
-   
-   배송완료 입력
-   http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryCompleted"
-   
-   
+피자제작시작 입력
+```
+http PATCH localhost:8083/orderDeliveries/1 orderState="PizzaProductionStarted"
+```
+배송출발 입력
+```
+http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryStarted"
+```
+배송완료 입력
+```
+http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryCompleted"
+```
    
 ### kafka 사용법
-   kafka폴더 이동.
-   1. zookeeper 실행
-   .\bin\windows\zookeeper-server-start.bat ..\..\config\zookeeper.properties
-   2. kafka server 실행
-   .\bin\windows\kafka-server-start.bat ..\..\config\server.properties
-   
-   메세지 확인하기
-   kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic pizza --from-beginning
+kafka폴더 이동.
+
+1. zookeeper 실행
+```
+.\bin\windows\zookeeper-server-start.bat ..\..\config\zookeeper.properties
+```
+2. kafka server 실행
+```
+.\bin\windows\kafka-server-start.bat ..\..\config\server.properties
+```
+메세지 확인하기
+```
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic pizza --from-beginning
+```
