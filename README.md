@@ -175,6 +175,9 @@ orderCanceled에서 paymentCancel로 pub 후 PaymentHistory 변경
 ## CQRS
 - view 스티커 구현
 - 주문 post 마이페이지 레코드 추가
+- 핵심 Biz로직은 동기식 처리 (Req/Res) 및 비동기식 처리(pub/sub)
+- 조회 목적 이력 관리를 위하여 비동기(pub/sub) 방식으로 주요 Event 별도 로그 저장
+(그림. 모델에서 각 event 표시, 저장 로직 표시)
 
 ## Correlation
 - Correlation key saga cqrs 자동 득점
