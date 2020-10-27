@@ -10,6 +10,7 @@ public class DeliveryCompleted extends AbstractEvent {
     private String address;
     private String notificationType;
     private String paymentDate;
+    private String state;
 
     public Long getId() {
         return id;
@@ -59,4 +60,7 @@ public class DeliveryCompleted extends AbstractEvent {
     public void setPaymentDate(String paymentDate) {
         this.paymentDate = paymentDate;
     }
+
+    public String getState() { return state; }
+    public void setState(String state) { this.state = state; }
 }

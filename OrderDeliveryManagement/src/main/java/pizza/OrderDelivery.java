@@ -17,9 +17,9 @@ public class OrderDelivery {
     private Long id;
     private Long customerId;
     /**
-     * orderState : OrderPlaced/PizzaProductionStarted/DeliveryStarted/DeliveryCompleted
+     * state : OrderPlaced/PizzaProductionStarted/DeliveryStarted/DeliveryCompleted
      */
-    private String orderState;
+    private String state;
     private String paymentDate;
     private String lastEventDate;
     private String menuOption;
@@ -28,9 +28,9 @@ public class OrderDelivery {
     @PrePersist
     public void onPrePersist(){
         System.out.println(MessageFormat.format("$$$ onPrePersist activated /{0}/{1}/"
-                , getId(), getOrderState()));
+                , getId(), getState()));
         if (Arrays.asList(new String[] {"PizzaProductionStarted", "DeliveryStarted", "DeliveryCompleted"})
-                .contains(getOrderState())) {
+                .contains(getState())) {
             this.setLastEventDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         }
     }
@@ -39,22 +39,23 @@ public class OrderDelivery {
     @PostUpdate
     public void onPostPersist(){
         System.out.println("$$$ onPostPersist activated");
-        if("PizzaProductionReady".equals(getOrderState())) {
+        if("PizzaProductionReady".equals(getState())) {
             // 주문은 들어왔지만 제작하기 전
         }
-        else if("PizzaProductionStarted".equals(getOrderState())) {
+        else if("PizzaProductionStarted".equals(getState())) {
             // 제작 수락한 경우
             System.out.println("$$$ before PizzaProductionStarted");
             PizzaProductionStarted pizzaProductionStarted = new PizzaProductionStarted();
             BeanUtils.copyProperties(this, pizzaProductionStarted);
             pizzaProductionStarted.setNotificationType("Notification");
+            pizzaProductionStarted.setPaymentDate(getPaymentDate());
             pizzaProductionStarted.setDate(getLastEventDate());
 
             pizzaProductionStarted.publishAfterCommit();
             System.out.println(MessageFormat.format("$$$ JSON Published by OrderDelivery:PizzaProductionStarted /{0}/{1}/{2}/{3}/"
                     , getId(), getCustomerId(), getAddress(), pizzaProductionStarted.getNotificationType()));
         }
-        else if ("DeliveryStarted".equals(getOrderState())) {
+        else if ("DeliveryStarted".equals(getState())) {
             System.out.println("$$$ before DeliveryStarted");
             DeliveryStarted deliveryStarted = new DeliveryStarted();
             BeanUtils.copyProperties(this, deliveryStarted);
@@ -66,7 +67,7 @@ public class OrderDelivery {
             System.out.println(MessageFormat.format("$$$ JSON Published by OrderDelivery:DeliveryStarted /{0}/{1}/{2}/"
                     , getId(), getCustomerId(), deliveryStarted.getNotificationType()));
         }
-        else if ("DeliveryCompleted".equals(getOrderState())) {
+        else if ("DeliveryCompleted".equals(getState())) {
             System.out.println("$$$ before DeliveryCompleted");
             DeliveryCompleted deliveryCompleted = new DeliveryCompleted();
             BeanUtils.copyProperties(this, deliveryCompleted);
@@ -88,11 +89,11 @@ public class OrderDelivery {
         this.id = id;
     }
 
-    public String getOrderState() {
-        return orderState;
+    public String getState() {
+        return state;
     }
-    public void setOrderState(String orderState) {
-        this.orderState = orderState;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public Long getCustomerId() {

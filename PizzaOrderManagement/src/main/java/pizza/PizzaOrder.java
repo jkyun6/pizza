@@ -32,7 +32,6 @@ public class PizzaOrder {
         if("PLACE".equals(getState().toUpperCase())) {
             OrderPlaced orderPlaced = new OrderPlaced();
             BeanUtils.copyProperties(this, orderPlaced);
-            orderPlaced.setId(getId());
             if(this.menuOption.length() <= 0) {
                 orderPlaced.setMenuOption("{\n" +
                         "  \"menu\": [\n" +

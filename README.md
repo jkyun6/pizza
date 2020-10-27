@@ -82,11 +82,11 @@
 ### Pizza Order 사용법
 주문
 ```
-http POST localhost:8081/pizzaOrders customerId=10 state="PLACE" menuOption="" price=10000 paymentMethod="CreditCard" address="ThewellI007Ho"
+http POST localhost:8088/pizzaOrders customerId=10 state="PLACE" menuOption="pepperoniPizza" price=10000 paymentMethod="CreditCard" address="ThewellI007Ho"
 ```
 주문 취소
 ```
-http PATCH localhost:8081/pizzaOrders/1 state="CANCEL"
+http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 ```
    
 ### Payment 사용법
@@ -95,20 +95,20 @@ http PATCH localhost:8081/pizzaOrders/1 state="CANCEL"
 ### OrderDelivery 사용법
 피자제작시작 입력
 ```
-http PATCH localhost:8083/orderDeliveries/1 state="PizzaProductionStarted"
+http PATCH localhost:8088/orderDeliveries/1 state="PizzaProductionStarted"
 ```
 배송출발 입력
 ```
-http PATCH localhost:8083/orderDeliveries/1 state="DeliveryStarted"
+http PATCH localhost:8088/orderDeliveries/1 state="DeliveryStarted"
 ```
 배송완료 입력
 ```
-http PATCH localhost:8083/orderDeliveries/1 state="DeliveryCompleted"
+http PATCH localhost:8088/orderDeliveries/1 state="DeliveryCompleted"
 ```
 
 ### 주문 취소
 ```
-http PATCH localhost:8081/pizzaOrders/1 state="CANCEL"
+http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 ```
 
 ## DDD의 적용

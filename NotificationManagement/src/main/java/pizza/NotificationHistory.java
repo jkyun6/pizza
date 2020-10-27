@@ -9,14 +9,18 @@ public class NotificationHistory {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+    private String timestamp;
+    private String eventType;
     private Long orderId;
     private Long customerId;
-    private String paymentDate;
-    private String eventDate;
-    private String notificationType;
+    private String paymentState;
     private String orderState;
     private String menuOption;
     private String address;
+    private Integer price;
+    private String notificationType;
+    private String paymentMethod;
+    private String paymentDate;
 
 
     public Long getId() {
@@ -40,19 +44,15 @@ public class NotificationHistory {
         this.customerId = customerId;
     }
 
-    public String getEventDate() {
-        return eventDate;
-    }
-    public void setEventDate(String eventDate) {
-        this.eventDate = eventDate;
-    }
-
     public String getNotificationType() {
         return notificationType;
     }
     public void setNotificationType(String notificationType) {
         this.notificationType = notificationType;
     }
+
+    public String getPaymentState() { return paymentState; }
+    public void setPaymentState(String paymentState) { this.paymentState = paymentState; }
 
     public String getOrderState() {
         return orderState;
@@ -82,5 +82,15 @@ public class NotificationHistory {
         this.paymentDate = paymentDate;
     }
 
+    public String getPaymentMethod() { return paymentMethod; }
+    public void setPaymentMethod(String paymentMethod) { this.paymentMethod = paymentMethod; }
 
+    public Integer getPrice() { return price; }
+    public void setPrice(Integer price) { this.price = price; }
+
+    public String getTimestamp() { return timestamp; }
+    public void setTimestamp(String timestamp) { this.timestamp = timestamp; }
+
+    public String getEventType() { return eventType; }
+    public void setEventType(String eventType) { this.eventType = eventType; }
 }
