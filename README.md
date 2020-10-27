@@ -95,20 +95,20 @@ http PATCH localhost:8081/pizzaOrders/1 state="CANCEL"
 ### OrderDelivery 사용법
 피자제작시작 입력
 ```
-http PATCH localhost:8083/orderDeliveries/1 orderState="PizzaProductionStarted"
+http PATCH localhost:8083/orderDeliveries/1 state="PizzaProductionStarted"
 ```
 배송출발 입력
 ```
-http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryStarted"
+http PATCH localhost:8083/orderDeliveries/1 state="DeliveryStarted"
 ```
 배송완료 입력
 ```
-http PATCH localhost:8083/orderDeliveries/1 orderState="DeliveryCompleted"
+http PATCH localhost:8083/orderDeliveries/1 state="DeliveryCompleted"
 ```
 
 ### 주문 취소
 ```
-http 
+http PATCH localhost:8081/pizzaOrders/1 state="CANCEL"
 ```
 
 ## DDD의 적용
