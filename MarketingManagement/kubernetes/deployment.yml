@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: MarketingManagement
+  name: marketingmanagement
   labels:
-    app: MarketingManagement
+    app: marketingmanagement
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: MarketingManagement
+      app: marketingmanagement
   template:
     metadata:
       labels:
-        app: MarketingManagement
+        app: marketingmanagement
     spec:
       containers:
-        - name: MarketingManagement
-          image: username/MarketingManagement:latest
+        - name: marketingmanagement
+          image: skcc13acr.azurecr.io/marketingmanagement:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -31,7 +31,7 @@ spec:
             httpGet:
               path: '/actuator/health'
               port: 8080
-            initialDelaySeconds: 120
+            initialDelaySeconds: 60
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 5

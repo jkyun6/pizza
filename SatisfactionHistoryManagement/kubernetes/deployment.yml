@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: satisfactionhistorymanagement
+  labels:
+    app: satisfactionhistorymanagement
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: satisfactionhistorymanagement
+  template:
+    metadata:
+      labels:
+        app: satisfactionhistorymanagement
+    spec:
+      containers:
+        - name: satisfactionhistorymanagement
+          image: skcc13acr.azurecr.io/satisfactionhistorymanagement:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5

@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/NotificationManagement/pom.xml" />
         <option value="$PROJECT_DIR$/SatisfactionManagement/pom.xml" />
         <option value="$PROJECT_DIR$/OrderDeliveryManagement/pom.xml" />
+        <option value="$PROJECT_DIR$/SatisfactionHistoryManagement/pom.xml" />
       </list>
     </option>
   </component>

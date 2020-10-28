@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 8085
 ---
 
 spring:
@@ -24,7 +24,7 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: OrderDeliveryManagement
+          group: orderdeliverymanagement
           destination: pizza
           contentType: application/json
         event-out:
@@ -36,9 +36,10 @@ logging:
     org.hibernate.type: trace
     org.springframework.cloud: debug
 server:
-  port: 8083
+  port: 8085
 ---
-
+server:
+  port: 8080
 spring:
   profiles: docker
   cloud:
@@ -56,7 +57,7 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: OrderDeliveryManagement
+          group: orderdeliverymanagement
           destination: pizza
           contentType: application/json
         event-out:

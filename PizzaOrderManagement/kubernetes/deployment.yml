@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: PizzaOrderManagement
+  name: pizzaordermanagement
   labels:
-    app: PizzaOrderManagement
+    app: pizzaordermanagement
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: PizzaOrderManagement
+      app: pizzaordermanagement
   template:
     metadata:
       labels:
-        app: PizzaOrderManagement
+        app: pizzaordermanagement
     spec:
       containers:
-        - name: PizzaOrderManagement
-          image: username/PizzaOrderManagement:latest
+        - name: pizzaordermanagement
+          image: skcc13acr.azurecr.io/pizzaordermanagement:latest
           ports:
             - containerPort: 8080
           readinessProbe:

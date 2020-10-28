@@ -45,6 +45,10 @@ public class PaymentHistory {
             System.out.println(MessageFormat.format("$$$ JSON Published by paymentHistory /Order:{0}/Customer:{1}/{2}/{3}/"
                     , getOrderId(), getCustomerId(), paymentApproved.getTimestamp()));
         }
+        else {
+            System.out.println("### Act PostPersist if Request [satisfactionWritten] succeed");
+            System.out.println(MessageFormat.format("#### /{0}/{1}/", getId(), getState()));
+        }
 
 
     }

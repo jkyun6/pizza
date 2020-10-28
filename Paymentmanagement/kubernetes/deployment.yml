@@ -1,35 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Paymentmanagement
+  name: paymentmanagement
   labels:
-    app: Paymentmanagement
+    app: paymentmanagement
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Paymentmanagement
+      app: paymentmanagement
   template:
     metadata:
       labels:
-        app: Paymentmanagement
+        app: paymentmanagement
     spec:
       containers:
-        - name: Paymentmanagement
-          image: username/Paymentmanagement:latest
+        - name: paymentmanagement
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
+          image: skcc13acr.azurecr.io/paymentmanagement:latest
           ports:
             - containerPort: 8080
           readinessProbe:
-            httpGet:
-              path: '/actuator/health'
+            tcpSocket:
               port: 8080
             initialDelaySeconds: 10
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 10
           livenessProbe:
-            httpGet:
-              path: '/actuator/health'
+            tcpSocket:
               port: 8080
             initialDelaySeconds: 120
             timeoutSeconds: 2

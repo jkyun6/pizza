@@ -3,20 +3,19 @@ package pizza;
 
 public class SatisfactionWritten extends AbstractEvent {
 
-    private Long orderId;
+    private Long id;
     private Long customerId;
     private String menuOption;
-    private String address;
-    private String satisfactionDate;
     private String satisfactionComment;
     private Integer satisfactionLevel;
+    private Integer isSatisfactionWritten;
 
-    public Long getOrderId() {
-        return orderId;
+    public Long getId() {
+        return id;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setId(Long id) {
+        this.id = id;
     }
     public Long getCustomerId() {
         return customerId;
@@ -32,20 +31,6 @@ public class SatisfactionWritten extends AbstractEvent {
     public void setMenuOption(String menuOption) {
         this.menuOption = menuOption;
     }
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-    public String getSatisfactionDate() {
-        return satisfactionDate;
-    }
-
-    public void setSatisfactionDate(String satisfactionDate) {
-        this.satisfactionDate = satisfactionDate;
-    }
     public String getSatisfactionComment() {
         return satisfactionComment;
     }
@@ -59,5 +44,13 @@ public class SatisfactionWritten extends AbstractEvent {
 
     public void setSatisfactionLevel(Integer satisfactionLevel) {
         this.satisfactionLevel = satisfactionLevel;
+    }
+
+    public Integer getIsSatisfactionWritten() {
+        return isSatisfactionWritten;
+    }
+
+    public void setIsSatisfactionWritten(Integer isSatisfactionWritten) {
+        this.isSatisfactionWritten = isSatisfactionWritten;
     }
 }

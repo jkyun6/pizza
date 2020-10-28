@@ -31,7 +31,11 @@ spring:
         - id: MarketingManagement
           uri: http://localhost:8086
           predicates:
-            - Path= 
+            - Path=/marketings/**
+        - id: SatisfactionHistoryManagement
+          uri: http://localhost:8087
+          predicates:
+            - Path=/satisfactionHistories/**
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -51,30 +55,34 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: PizzaOrderManagement
-          uri: http://PizzaOrderManagement:8080
+        - id: pizzaordermanagement
+          uri: http://pizzaordermanagement:8080
           predicates:
             - Path=/pizzaOrders/** 
-        - id: Paymentmanagement
-          uri: http://Paymentmanagement:8080
+        - id: paymentmanagement
+          uri: http://paymentmanagement:8080
           predicates:
             - Path=/paymentHistories/** 
-        - id: NotificationManagement
-          uri: http://NotificationManagement:8080
+        - id: notificationmanagement
+          uri: http://notificationmanagement:8080
           predicates:
             - Path=/notificationHistories/** 
-        - id: SatisfactionManagement
-          uri: http://SatisfactionManagement:8080
+        - id: satisfactionmanagement
+          uri: http://satisfactionmanagement:8080
           predicates:
             - Path=/satisfactions/** 
-        - id: OrderDeliveryManagement
-          uri: http://OrderDeliveryManagement:8080
+        - id: orderdeliverymanagement
+          uri: http://orderdeliverymanagement:8080
           predicates:
             - Path=/orderDeliveries/** 
-        - id: MarketingManagement
-          uri: http://MarketingManagement:8080
+        - id: marketingmanagement
+          uri: http://marketingmanagement:8080
           predicates:
-            - Path= 
+            - Path=/marketings/**
+        - id: satisfactionmanagement
+          uri: http://satisfactionmanagement:8080
+          predicates:
+            - Path=/saticfactionHistories/**
       globalcors:
         corsConfigurations:
           '[/**]':

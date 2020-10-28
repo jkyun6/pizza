@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8084
 ---
 
 spring:
@@ -24,7 +24,7 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: SatisfactionManagement
+          group: satisfactionmanagement
           destination: pizza
           contentType: application/json
         event-out:
@@ -38,7 +38,8 @@ logging:
 server:
   port: 8084
 ---
-
+server:
+  port: 8080
 spring:
   profiles: docker
   cloud:
@@ -56,7 +57,7 @@ spring:
                   serde: org.apache.kafka.common.serialization.Serdes$StringSerde
       bindings:
         event-in:
-          group: SatisfactionManagement
+          group: satisfactionmanagement
           destination: pizza
           contentType: application/json
         event-out:

@@ -1,35 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: SatisfactionManagement
+  name: satisfactionmanagement
   labels:
-    app: SatisfactionManagement
+    app: satisfactionmanagement
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: SatisfactionManagement
+      app: satisfactionmanagement
   template:
     metadata:
       labels:
-        app: SatisfactionManagement
+        app: satisfactionmanagement
     spec:
       containers:
-        - name: SatisfactionManagement
-          image: username/SatisfactionManagement:latest
+        - name: satisfactionmanagement
+          image: skcc13acr.azurecr.io/satisfactionmanagement:latest
           ports:
             - containerPort: 8080
           readinessProbe:
-            httpGet:
-              path: '/actuator/health'
+            tcpSocket:
               port: 8080
             initialDelaySeconds: 10
             timeoutSeconds: 2
             periodSeconds: 5
             failureThreshold: 10
           livenessProbe:
-            httpGet:
-              path: '/actuator/health'
+            tcpSocket:
               port: 8080
             initialDelaySeconds: 120
             timeoutSeconds: 2

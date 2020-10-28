@@ -56,7 +56,7 @@ public class PizzaOrder {
             System.out.println(MessageFormat.format("$$$ JSON Published by pizzaOrder:PLACE /{0}/{1}/{2}/{3}/", getId(), getCustomerId(), getState(), getDate()));
             System.out.println(getMenuOption());
 
-            //Following code causes dependency to external APIs
+            //Following code causes dependency to pizza.external APIs
             // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
             System.out.println(MessageFormat.format("$$$ Request from pizzaOrder:PLACE /{0}/{1}/{2}/{3}/", getId(), getCustomerId(), getState(), getDate()));

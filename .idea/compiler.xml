@@ -10,6 +10,7 @@
         <module name="boot-camp-gateway" />
         <module name="Paymentmanagement" />
         <module name="MarketingManagement" />
+        <module name="SatisfactionHistoryManagement" />
         <module name="PizzaOrderManagement" />
         <module name="OrderDeliveryManagement" />
         <module name="NotificationManagement" />
@@ -22,6 +23,7 @@
       <module name="OrderDeliveryManagement" target="1.8" />
       <module name="Paymentmanagement" target="1.8" />
       <module name="PizzaOrderManagement" target="1.8" />
+      <module name="SatisfactionHistoryManagement" target="1.8" />
       <module name="SatisfactionManagement" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -32,6 +34,7 @@
       <module name="OrderDeliveryManagement" options="-parameters" />
       <module name="Paymentmanagement" options="-parameters" />
       <module name="PizzaOrderManagement" options="-parameters" />
+      <module name="SatisfactionHistoryManagement" options="-parameters" />
       <module name="SatisfactionManagement" options="-parameters" />
       <module name="boot-camp-gateway" options="-parameters" />
     </option>

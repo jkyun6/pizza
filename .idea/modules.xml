@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/OrderDeliveryManagement/OrderDeliveryManagement.iml" filepath="$PROJECT_DIR$/OrderDeliveryManagement/OrderDeliveryManagement.iml" />
       <module fileurl="file://$PROJECT_DIR$/Paymentmanagement/Paymentmanagement.iml" filepath="$PROJECT_DIR$/Paymentmanagement/Paymentmanagement.iml" />
       <module fileurl="file://$PROJECT_DIR$/PizzaOrderManagement/PizzaOrderManagement.iml" filepath="$PROJECT_DIR$/PizzaOrderManagement/PizzaOrderManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SatisfactionHistoryManagement/SatisfactionHistoryManagement.iml" filepath="$PROJECT_DIR$/SatisfactionHistoryManagement/SatisfactionHistoryManagement.iml" />
       <module fileurl="file://$PROJECT_DIR$/SatisfactionManagement/SatisfactionManagement.iml" filepath="$PROJECT_DIR$/SatisfactionManagement/SatisfactionManagement.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway/boot-camp-gateway.iml" filepath="$PROJECT_DIR$/gateway/boot-camp-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/pizza.iml" filepath="$PROJECT_DIR$/.idea/pizza.iml" />
