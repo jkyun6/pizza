@@ -350,13 +350,13 @@ siege -c50 -t60S -r10 http://10.0.94.200:8080/pizzaOrders
 
 
 ## Config Map / Persistence Volume (둘 중에 하나)
-application.yml
+- application.yml:
 ![image](https://user-images.githubusercontent.com/34112237/97435458-c86d6000-1963-11eb-8c36-1debcb95ae40.png)
-deployment.yml
+- deployment.yml:
 ![image](https://user-images.githubusercontent.com/34112237/97435479-d0c59b00-1963-11eb-844f-e593772a39a1.png)
-configmap 설정
+- configmap 설정:
 ![image](https://user-images.githubusercontent.com/34112237/97435518-dd49f380-1963-11eb-9592-8c7c16bab8f3.png)
-Application 활용
+- Application 활용:
 ![image](https://user-images.githubusercontent.com/34112237/97435550-e8048880-1963-11eb-8434-1325a51c2868.png)
 
 ## Polyglot
