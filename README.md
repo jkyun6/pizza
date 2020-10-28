@@ -163,10 +163,26 @@ http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 ```
 
 ### 오토 스케일 아웃
-간략한 설명 작성
+k8s hpa를 활용한 auto scaling
+
+###### deployment.yaml 설정
 ```
-소스코드 붙여넣기
+spec:
+  ...
+  template:
+    metadata:
+      labels:
+        app: Paymentmanagement
+    spec:
+      containers:
+        - name: Paymentmanagement
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
 ```
+1. hpa 생성
 
 ## 무정지 배포
 간략한 설명 작성
@@ -260,8 +276,67 @@ replicaset.apps/pizzaordermanagement-85c5f67d85      0         0         0      
 ## Circuit Breaker 
 
 
-
 ## Autoscale (HPA)
+사용자의 요청을 모두 받아들이기 위해 Auto Scale 기능을 적용했다. 
+
+
+- 주문배송 관리 서비스에 대한 replica 를 동적으로 늘려주도록 HPA 를 설정한다. 설정은 CPU 사용량이 20프로를 넘어서면 replica 를 최대 10개까지 늘려준다:
+```
+kubectl autoscale deployment orderdeliverymanagement --cpu-percent=20 --min=1 --max=10
+```
+
+- 오토스케일이 어떻게 되고 있는지 모니터링을 걸어둔다:
+```
+watch -n 3 kubectl get all
+```
+![auto scale  늘어나기 전 pods list](https://user-images.githubusercontent.com/44703764/97434966-22215a80-1963-11eb-8bfe-a32d7f9cfcf4.png)
+
+- 무한 워크로드를 걸어준다.
+```
+while true;do curl 52.149.189.108:8080/orderDeliveries;done
+```
+
+- cpu 사용량 조회를 위해 hpa를 모니터링한다.
+```
+watch -n 1 kubectl get hpa
+```
+![auto scale  fullload - replica 10으로 늘어남](https://user-images.githubusercontent.com/44703764/97434956-1df53d00-1963-11eb-9e39-2cf8aa5f49e3.png)
+
+- cpu 사용량이 20%를 넘어가면서 스케일 아웃이 벌어지는 것을 확인할 수 있다:
+![auto scale  load target 초괴하여 replica 늘어남](https://user-images.githubusercontent.com/44703764/97434963-1f266a00-1963-11eb-9081-8fb8bcd7ae48.png)
+
+- ![auto scale  fullload - replica 10으로 늘어난 pods list](https://user-images.githubusercontent.com/44703764/97434995-2d748600-1963-11eb-81ac-8afeef211f08.png)
+
+- 무한 로드 중단 후 cpu 사용량이 안정되면 replica가 줄어드는 것을 확인할 수 있다:
+![auto scale  부하정상화된 후 1로 줄어듦](https://user-images.githubusercontent.com/44703764/97434949-1c2b7980-1963-11eb-9e2a-56509717cf6a.png)
+
+
+
+## 무정지 재배포
+
+* 먼저 무정지 재배포가 100% 되는 것인지 확인하기 위해서 Autoscaler 설정을 제거함
+
+- seige를 사용하여 CI/CD 실행 직전에 워크로드를 모니터링 함.
+```
+siege -c50 -t60S -r10 http://10.0.94.200:8080/pizzaOrders
+```
+
+- git commit을 하여 CI/CD 파이프라인 시작
+- seige 의 화면으로 넘어가서 Availability 가 100% 미만으로 떨어졌는지 확인
+![readiness  readiness없을 때 배포 시 가용성 낮음](https://user-images.githubusercontent.com/44703764/97436892-0e2b2800-1966-11eb-8c5e-e66da089c099.png)
+
+
+배포기간중 Availability 가 평소 100%에서 80% 대로 떨어지는 것을 확인.
+원인은 쿠버네티스가 새로 올려진 서비스의 상태를 무조건 READY로 인식하여 서비스 유입을 성급하게 진행한 것이기 때문. 이를 막기위해 Readiness Probe 를 설정함:
+
+- deployment.yaml 을 수정하여 readiness probe 설정한 후 git commit.
+
+- 동일한 시나리오로 재배포 한 후 Availability 확인:
+![readiness  설정 후 무중단 배포된 것 확인함](https://user-images.githubusercontent.com/44703764/97436897-0ec3be80-1966-11eb-8a6e-99b02482995a.png)
+
+
+배포기간 동안 Availability 가 변화없기 때문에 무정지 재배포가 성공한 것으로 확인됨.
+
 
 ## Zero-downtime deploy (Readiness Probe)
 - 배포가 될 때 무정지로... 부하 중에 새로운 버전으로....
