@@ -18,10 +18,9 @@
     1. 결제가 되지 않은 주문건은 아예 거래가 성립되지 않아야 한다  Sync 호출 
 1. 장애격리
     1. 주문/배송 기능이 수행되지 않더라도 주문은 365일 24시간 받을 수 있어야 한다  Async (event-driven), Eventual Consistency
-    1. 결제시스템이 과중되면 사용자를 잠시동안 받지 않고 결제를 잠시후에 하도록 유도한다  Circuit breaker, fallback
+    1. (??????????????????)결제시스템이 과중되면 사용자를 잠시동안 받지 않고 결제를 잠시후에 하도록 유도한다  Circuit breaker, fallback
 1. 성능
     1. 주문과 조회를 분리하여 시스템 성능을 향상시킨다.  (CQRS)
-    1. 배달상태가 바뀔때마다 카톡 등으로 알림을 줄 수 있어야 한다  Event driven
 
 
 # 분석 설계
@@ -70,9 +69,8 @@
 1. 비기능적 요구사항
     1. 결제가 되지 않은 주문건은 아예 거래가 성립되지 않아야 한다  Sync 호출  (OK)
     1. 주문/배송 기능이 수행되지 않더라도 주문은 365일 24시간 받을 수 있어야 한다  Async (event-driven), Eventual Consistency (OK)
-    1. 결제시스템이 과중되면 사용자를 잠시동안 받지 않고 결제를 잠시후에 하도록 유도한다  Circuit breaker, fallback (OK)
+    1. (??????????????????)결제시스템이 과중되면 사용자를 잠시동안 받지 않고 결제를 잠시후에 하도록 유도한다  Circuit breaker, fallback (OK)
     1. 주문과 조회를 분리하여 시스템 성능을 향상시킨다.  (CQRS) (OK)
-    1. 배달상태가 바뀔때마다 카톡 등으로 알림을 줄 수 있어야 한다  Event driven (OK)
 
 ## 헥사고날 아키텍처 다이어그램 도출
 ![image](https://user-images.githubusercontent.com/34112237/97233785-dcf60f00-1822-11eb-9583-abc3d6ae706e.png)
@@ -168,13 +166,19 @@ http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 # deployment.yaml 의 readiness probe 의 설정:
 
 
+
+
+
+
+
+
 # 평가항목
 ## Saga
 orderCanceled에서 paymentCancel로 pub 후 PaymentHistory 변경
 
 ## CQRS
-- view 스티커 구현
-- 주문 post 마이페이지 레코드 추가
+![image](https://user-images.githubusercontent.com/34112237/97382926-c1b4fd80-190f-11eb-9ccd-1d12a7729e1d.png)
+- view 스티커 구현 (삭제)
 - 핵심 Biz로직은 동기식 처리 (Req/Res) 및 비동기식 처리(pub/sub)
 - 조회 목적 이력 관리를 위하여 비동기(pub/sub) 방식으로 주요 Event 별도 로그 저장
 (그림. 모델에서 각 event 표시, 저장 로직 표시)
@@ -187,7 +191,13 @@ orderCanceled에서 paymentCancel로 pub 후 PaymentHistory 변경
 
 ## Gateway
 
-## Deploy/Pipeline (필수 아님, 운영에는 반영되어야 함)
+## Deploy/Pipeline
+PizzaOrderManagement GITHUB에 신규 파일 추가
+![image](https://user-images.githubusercontent.com/34112237/97384017-2ec99280-1912-11eb-8f36-26b3c444b234.png)
+
+CI/CD 파이프라인 자동 적용
+![image](https://user-images.githubusercontent.com/34112237/97383819-d1354600-1911-11eb-9c0a-912216b45410.png)
+
 
 ## Circuit Breaker 
 
