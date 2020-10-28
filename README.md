@@ -199,12 +199,70 @@ CI/CD 파이프라인 자동 적용
 ![image](https://user-images.githubusercontent.com/34112237/97383819-d1354600-1911-11eb-9c0a-912216b45410.png)
 ![image](https://user-images.githubusercontent.com/34112237/97384616-61c05600-1913-11eb-89ba-813220216e9e.png)
 
+```
+skcc02@Azure:~$ kubectl get all
+NAME                                           READY   STATUS    RESTARTS   AGE
+pod/gateway-6f676b79b9-zpfrn                   1/1     Running   0          36m
+pod/httpie                                     1/1     Running   1          17h
+pod/notificationmanagement-6776554c78-ltj4d    1/1     Running   0          23m
+pod/orderdeliverymanagement-7546b6f744-vvh9n   1/1     Running   0          15h
+pod/paymentmanagement-8656994556-6qw66         1/1     Running   0          101s
+pod/pizzaordermanagement-667cb666bd-d5fln      1/1     Running   0          24m
+
+NAME                              TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)          AGE
+service/gateway                   LoadBalancer   10.0.94.200    52.149.189.108   8080:30155/TCP   36m
+service/kubernetes                ClusterIP      10.0.0.1       <none>           443/TCP          16h
+service/notificationmanagement    ClusterIP      10.0.131.123   <none>           8080/TCP         125m
+service/orderdeliverymanagement   ClusterIP      10.0.208.63    <none>           8080/TCP         16h
+service/paymentmanagement         ClusterIP      10.0.57.39     <none>           8080/TCP         3m59s
+service/pizzaordermanagement      ClusterIP      10.0.244.64    <none>           8080/TCP         3h34m
+
+NAME                                      READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/gateway                   1/1     1            1           36m
+deployment.apps/notificationmanagement    1/1     1            1           125m
+deployment.apps/orderdeliverymanagement   1/1     1            1           16h
+deployment.apps/paymentmanagement         1/1     1            1           4m2s
+deployment.apps/pizzaordermanagement      1/1     1            1           3h34m
+
+NAME                                                 DESIRED   CURRENT   READY   AGE
+replicaset.apps/gateway-6f676b79b9                   1         1         1       36m
+replicaset.apps/notificationmanagement-6776554c78    1         1         1       24m
+replicaset.apps/notificationmanagement-67f8757474    0         0         0       125m
+replicaset.apps/notificationmanagement-6b7b6d796b    0         0         0       124m
+replicaset.apps/orderdeliverymanagement-54fcf466cf   0         0         0       16h
+replicaset.apps/orderdeliverymanagement-5cf5dc657c   0         0         0       16h
+replicaset.apps/orderdeliverymanagement-65b5f4fcfb   0         0         0       16h
+replicaset.apps/orderdeliverymanagement-7546b6f744   1         1         1       15h
+replicaset.apps/orderdeliverymanagement-7ff58767b9   0         0         0       16h
+replicaset.apps/orderdeliverymanagement-cf84dcfc     0         0         0       16h
+replicaset.apps/paymentmanagement-559b8dc87b         0         0         0       3m59s
+replicaset.apps/paymentmanagement-5969d57847         0         0         0       4m2s
+replicaset.apps/paymentmanagement-8656994556         1         1         1       102s
+replicaset.apps/pizzaordermanagement-57c4d9cc7b      0         0         0       70m
+replicaset.apps/pizzaordermanagement-667cb666bd      1         1         1       24m
+replicaset.apps/pizzaordermanagement-66d968895c      0         0         0       66m
+replicaset.apps/pizzaordermanagement-7779c544df      0         0         0       3h34m
+replicaset.apps/pizzaordermanagement-7d54c94bb6      0         0         0       62m
+replicaset.apps/pizzaordermanagement-85c5f67d85      0         0         0       3h34m
+```
+
+
 ## Circuit Breaker 
+
+
 
 ## Autoscale (HPA)
 
 ## Zero-downtime deploy (Readiness Probe)
 - 배포가 될 때 무정지로... 부하 중에 새로운 버전으로....
+
+## Self-healing (Liveness Probe)
+- 리스타트되도록 증적 캡쳐	
+
+![image](https://user-images.githubusercontent.com/34112237/97389585-047dd200-191e-11eb-8a2d-11639b262d76.png)
+
+![image](https://user-images.githubusercontent.com/34112237/97389810-a4d3f680-191e-11eb-9635-d01352b6aa07.png)
+
 
 ## Config Map / Persistence Volume (둘 중에 하나)
    - 이뮤터블 이미지, 쿠버네티스 콘피그 맵
@@ -212,8 +270,7 @@ CI/CD 파이프라인 자동 적용
 ## Polyglot
    - 랭기지 레벨 또는 데이터베이스 레벨
 
-## Self-healing (Liveness Probe)
-   - 리스타트되도록 증적 캡쳐	
+
    
    
 # 자주 사용하는 명령어
