@@ -197,7 +197,7 @@ PizzaOrderManagement GITHUB에 신규 파일 추가
 
 CI/CD 파이프라인 자동 적용
 ![image](https://user-images.githubusercontent.com/34112237/97383819-d1354600-1911-11eb-9c0a-912216b45410.png)
-
+![image](https://user-images.githubusercontent.com/34112237/97384616-61c05600-1913-11eb-89ba-813220216e9e.png)
 
 ## Circuit Breaker 
 
