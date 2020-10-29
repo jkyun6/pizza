@@ -159,22 +159,7 @@ http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
     mongodb:
       uri: mongodb://localhost:27017
       database: admin
-      username: sjh
-      password: sjh
-  profiles: default
-#  jpa:
-#    properties:
-#      hibernate:
-#        show_sql: true
-#        format_sql: true
-
-#  h2:
-#    console:
-#      enabled: true
-logging:
-  level:
-#    org.hibernate.type: trace
-    org.springframework.cloud: debug
+      username: 
 ```
 
 ## 폴리글랏 - 프로그래밍
