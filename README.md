@@ -20,9 +20,20 @@
     1. 주문/배송 기능이 수행되지 않더라도 주문은 365일 24시간 받을 수 있어야 한다  Async (event-driven), Eventual Consistency
 1. 성능
     1. 주문과 조회를 분리하여 시스템 성능을 향상시킨다.  (CQRS)
+    
 
 
 # 분석 설계
+
+## DDD의 적용
+핵심도메인, 서브도메인, 지원도메인으로 나누어 서비스를 구현함
+- 핵심도메인 : 피자주문, 주문결제, 주문배달
+- 서브도메인 : 알림관리, 마케팅관리
+- 지원도메인 : (계좌결제서비스)
+
+```
+(분석/설계 내용 참조)
+```
 
 ## Event Storming 결과
 * MESEz로 모델링한 이벤트스토밍 결과 : http://www.msaez.io/#/storming/9jZsKaOObZg9sIWkpGQ0AqEx6kv2/mine/43513577ef0b64659209b3c97904ee99/-MK-BBvebd33BLu8-JwH
@@ -123,16 +134,6 @@ http PATCH localhost:8088/orderDeliveries/1 state="DeliveryCompleted"
 ### 주문 취소
 ```
 http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
-```
-
-## DDD의 적용
-핵심도메인, 서브도메인, 지원도메인으로 나누어 서비스를 구현함
-- 핵심도메인 : 피자주문, 주문결제, 주문배달
-- 서브도메인 : 알림관리, 마케팅관리
-- 지원도메인 : (계좌결제서비스)
-
-```
-(분석/설계 내용 참조)
 ```
 
 ## 폴리글랏 퍼시스턴스
@@ -428,10 +429,14 @@ replicaset.apps/pizzaordermanagement-85c5f67d85      0         0         0      
 
 
 ## Circuit Breaker 
+- 장애전파 차단을 위한 패턴으로 아래 3가지로 구현할 수 있음 
+1)코드 기반 (Feignclient 삽입)
+2)라이브러리 기반(Hystrix)
+3)Proxy 기반 (Istion/Envoy 등)
 
 
 ## Autoscale (HPA)
-사용자의 요청을 모두 받아들이기 위해 Auto Scale 기능을 적용했다. 
+사용자의 요청을 모두 받아들이기 위해 Auto Scale 기능을 적용 
 
 
 - 주문배송 관리 서비스에 대한 replica 를 동적으로 늘려주도록 HPA 를 설정한다. 설정은 CPU 사용량이 20프로를 넘어서면 replica 를 최대 10개까지 늘려준다:
@@ -466,7 +471,7 @@ watch -n 1 kubectl get hpa
 
 
 
-## 무정지 재배포
+## 무정지 재배포 (Liveness Probe & Readiness Probe)
 
 * 먼저 무정지 재배포가 100% 되는 것인지 확인하기 위해서 Autoscaler 설정을 제거함
 
@@ -503,7 +508,7 @@ siege -c50 -t60S -r10 http://10.0.94.200:8080/pizzaOrders
 ![image](https://user-images.githubusercontent.com/34112237/97389810-a4d3f680-191e-11eb-9635-d01352b6aa07.png)
 
 
-## Config Map / Persistence Volume (둘 중에 하나)
+## Config Map
 - application.yml
 
 ![image](https://user-images.githubusercontent.com/34112237/97435458-c86d6000-1963-11eb-8c36-1debcb95ae40.png)
@@ -520,21 +525,3 @@ siege -c50 -t60S -r10 http://10.0.94.200:8080/pizzaOrders
 
 
    
-   
-# 자주 사용하는 명령어
-   
-## kafka 사용법
-kafka폴더 이동.
-
-1. zookeeper 실행
-```
-.\bin\windows\zookeeper-server-start.bat ..\..\config\zookeeper.properties
-```
-2. kafka server 실행
-```
-.\bin\windows\kafka-server-start.bat ..\..\config\server.properties
-```
-메세지 확인하기
-```
-kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic pizza --from-beginning
-```
