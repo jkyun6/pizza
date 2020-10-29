@@ -372,11 +372,12 @@ server:
  ```
 # 운영
 
-## Deploy/Pipeline
-PizzaOrderManagement GITHUB에 신규 파일 추가
+## CI/CD Pipeline
+GitHub에 파일 신규 추가, 수정을 한 후 Commit 처리를 한 경우 자동으로 이미지  생성(Build), 운영배포(Deploy)가 되도록 구성함
+
 ![image](https://user-images.githubusercontent.com/34112237/97384017-2ec99280-1912-11eb-8f36-26b3c444b234.png)
 
-CI/CD 파이프라인 자동 적용
+CI/CD 파이프라인 자동 적용 
 ![image](https://user-images.githubusercontent.com/34112237/97383819-d1354600-1911-11eb-9c0a-912216b45410.png)
 ![image](https://user-images.githubusercontent.com/34112237/97384616-61c05600-1913-11eb-89ba-813220216e9e.png)
 
@@ -461,12 +462,12 @@ watch -n 1 kubectl get hpa
 ```
 ![auto scale  fullload - replica 10으로 늘어남](https://user-images.githubusercontent.com/44703764/97434956-1df53d00-1963-11eb-9e39-2cf8aa5f49e3.png)
 
-- cpu 사용량이 20%를 넘어가면서 스케일 아웃이 벌어지는 것을 확인할 수 있다:
+- cpu 사용량이 20%를 넘어가면서 스케일 아웃이 벌어지는 것 (max치에 도달하면 replica 갯수가 늘어남) 을 확인할 수 있다:
 ![auto scale  load target 초괴하여 replica 늘어남](https://user-images.githubusercontent.com/44703764/97434963-1f266a00-1963-11eb-9081-8fb8bcd7ae48.png)
 
 - ![auto scale  fullload - replica 10으로 늘어난 pods list](https://user-images.githubusercontent.com/44703764/97434995-2d748600-1963-11eb-81ac-8afeef211f08.png)
 
-- 무한 로드 중단 후 cpu 사용량이 안정되면 replica가 줄어드는 것을 확인할 수 있다:
+- While Loop를 중단 (ctrl+C) 하면 사용량이 안정되 replica가 다시 줄어드는 것을 확인할 수 있다:
 ![auto scale  부하정상화된 후 1로 줄어듦](https://user-images.githubusercontent.com/44703764/97434949-1c2b7980-1963-11eb-9e2a-56509717cf6a.png)
 
 
