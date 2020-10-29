@@ -126,7 +126,11 @@ http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 ```
 
 ## DDD의 적용
-간략한 설명 작성
+핵심도메인, 서브도메인, 지원도메인으로 나누어 서비스를 구현함
+- 핵심도메인 : 피자주문, 주문결제, 주문배달
+- 서브도메인 : 알림관리, 마케팅관리
+- 지원도메인 : (계좌결제서비스)
+
 ```
 소스코드 붙여넣기
 ```
@@ -248,11 +252,6 @@ public class PolicyHandler{
 ```
 # 운영
 
-## CI/CD 설정
-간략한 설명 작성
-```
-소스코드 붙여넣기
-```
 
 ## 동기식 호출 / 서킷 브레이킹 / 장애 격리
 간략한 설명 작성
@@ -351,10 +350,51 @@ public class PolicyHandler{
 }
 
 
-## Req/Resp
-- 
-
 ## Gateway
+```
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: pizzaordermanagement
+          uri: http://pizzaordermanagement:8080
+          predicates:
+            - Path=/pizzaOrders/** 
+        - id: paymentmanagement
+          uri: http://paymentmanagement:8080
+          predicates:
+            - Path=/paymentHistories/** 
+        - id: notificationmanagement
+          uri: http://notificationmanagement:8080
+          predicates:
+            - Path=/notificationHistories/** 
+        - id: satisfactionmanagement
+          uri: http://satisfactionmanagement:8080
+          predicates:
+            - Path=/satisfactions/** 
+        - id: orderdeliverymanagement
+          uri: http://orderdeliverymanagement:8080
+          predicates:
+            - Path=/orderDeliveries/** 
+        - id: marketingmanagement
+          uri: http://marketingmanagement:8080
+          predicates:
+            - Path= 
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
+ ```
 
 ## Deploy/Pipeline
 PizzaOrderManagement GITHUB에 신규 파일 추가
