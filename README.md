@@ -54,13 +54,6 @@
 ### 06. 팀과제최종(영어)
 ![09 팀과제최종영어](https://user-images.githubusercontent.com/34112237/97229782-36a70b00-181c-11eb-9417-f3c387f84689.PNG)
 
-### 07. 개인 과제 - 쿠폰관리 서비스 (추가) 
-1. 기능적 요구사항
-   - 주문 배달이 완료 이벤트를 받아 쿠폰을 발행한다
-   - 쿠폰 발행 이력을 기록한다 
-   - 추후 주문생성시 쿠폰을 사용할 수 있도록 연계한다 
-![image](https://user-images.githubusercontent.com/69283705/97520837-7f5af180-19df-11eb-9952-96e5e963cd9a.png)
-   
 ### 1차 모형 기능적/비기능적 요구사항을 만족하는지 검증
 1. 기능적 요구사항 
     1. 고객이 메뉴를 주문한다 (OK)
@@ -132,53 +125,17 @@ http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 소스코드 붙여넣기
 ```
 
-## 폴리글랏 퍼시스턴스 & 프로그래밍
+## 폴리글랏 퍼시스턴스
+간략한 설명 작성
+```
+소스코드 붙여넣기
+```
 
-1) 새로 추가한 쿠폰 관리서비스 중 "CouponHistoryManagement" 의 DB를 "H2 -> Mongo" 로 변경 설정함 (POM.xml)
-<!--		<dependency>-->
-<!--			<groupId>com.h2database</groupId>-->
-<!--			<artifactId>h2</artifactId>-->
-<!--			<scope>runtime</scope>-->
-<!--		</dependency>-->
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>bson</artifactId>
-		</dependency>
-		
-2) 쿠폰 관리서비스 중 "CouponHistoryManagement" 의 DB를 "H2 -> Mongo" 설정 내역 (application.yaml)
-</dependency>
-
-spring:
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017
-      database: admin
-      username: sjh
-      password: sjh
-  profiles: default
-#  jpa:
-#    properties:
-#      hibernate:
-#        show_sql: true
-#        format_sql: true
-~~~
-#  h2:
-#    console:
-#      enabled: true
-logging:
-  level:
-#    org.hibernate.type: trace
-    org.springframework.cloud: debug
-server:
-  port: 8087
-
-
+## 폴리글랏 프로그래밍
+간략한 설명 작성
+```
+소스코드 붙여넣기
+```
 
 ## 동기식 호출과 Fallback 처리
 간략한 설명 작성
