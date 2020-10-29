@@ -132,7 +132,7 @@ http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 - 지원도메인 : (계좌결제서비스)
 
 ```
-소스코드 붙여넣기
+(분석/설계 내용 참조)
 ```
 
 ## 폴리글랏 퍼시스턴스
@@ -174,9 +174,9 @@ logging:
 ```
 
 ## 폴리글랏 프로그래밍
-간략한 설명 작성
+- 개발 Language나 DB로 Polyglot 을 구현할 수 있음(본 프로젝트에서는 H2,Mongo DB를 적용함)
 ```
-소스코드 붙여넣기
+(폴리그랏 퍼시스턴스 참조)
 ```
 
 ## 동기식 호출과 Fallback 처리
@@ -542,8 +542,6 @@ siege -c50 -t60S -r10 http://10.0.94.200:8080/pizzaOrders
 
 ![image](https://user-images.githubusercontent.com/34112237/97435550-e8048880-1963-11eb-8434-1325a51c2868.png)
 
-## Polyglot
-   - 랭기지 레벨 또는 데이터베이스 레벨
 
 
    
