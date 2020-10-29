@@ -139,10 +139,23 @@ http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 ```
 
 ## 폴리글랏 프로그래밍
-간략한 설명 작성
-```
-소스코드 붙여넣기
-```
+새로 추가한 쿠폰 관리서비스 중 "CouponHistoryManagement" 서비스의 DB를 Mongo 로 변경 설정함
+<!--		<dependency>-->
+<!--			<groupId>com.h2database</groupId>-->
+<!--			<artifactId>h2</artifactId>-->
+<!--			<scope>runtime</scope>-->
+<!--		</dependency>-->
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>bson</artifactId>
+		</dependency>
+
 
 ## 동기식 호출과 Fallback 처리
 간략한 설명 작성
