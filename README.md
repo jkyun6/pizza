@@ -90,6 +90,7 @@
 ![CoreSTEP03-PATCH](https://user-images.githubusercontent.com/34112237/97390100-5e32cc00-191f-11eb-9f8e-2c28650b65cc.png)
 ![CoreSTEP04-PATCH](https://user-images.githubusercontent.com/34112237/97390106-60952600-191f-11eb-88db-5494b8a5c584.png)
 
+![image](https://user-images.githubusercontent.com/69283705/97531829-614dbb00-19f8-11eb-8242-c7339b874675.png)
 
 ## 서비스 호출
 ### Pizza Order 사용법
