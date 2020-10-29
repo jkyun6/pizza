@@ -90,6 +90,10 @@
 ![image](https://user-images.githubusercontent.com/69283705/97531359-652d0d80-19f7-11eb-92d4-1a5d95e15e3b.png)
 
 # 구현
+
+## 구현 결과 - 프로젝트 목록
+![image](https://user-images.githubusercontent.com/69283705/97531829-614dbb00-19f8-11eb-8242-c7339b874675.png)
+
 ## 실행 결과
 ![CancelLog(External request)](https://user-images.githubusercontent.com/34112237/97390068-4b1ffc00-191f-11eb-98c2-563bed04de5f.png)
 ![CancelMessage](https://user-images.githubusercontent.com/34112237/97390071-4d825600-191f-11eb-88e3-3f777e4ed091.png)
@@ -101,7 +105,6 @@
 ![CoreSTEP03-PATCH](https://user-images.githubusercontent.com/34112237/97390100-5e32cc00-191f-11eb-9f8e-2c28650b65cc.png)
 ![CoreSTEP04-PATCH](https://user-images.githubusercontent.com/34112237/97390106-60952600-191f-11eb-88db-5494b8a5c584.png)
 
-![image](https://user-images.githubusercontent.com/69283705/97531829-614dbb00-19f8-11eb-8242-c7339b874675.png)
 
 ## 서비스 호출
 ### Pizza Order 사용법
@@ -114,10 +117,10 @@ http POST localhost:8088/pizzaOrders customerId=10 state="PLACE" menuOption="pep
 http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 ```
    
-### Payment 사용법
+### Payment 명령
 
 
-### OrderDelivery 사용법
+### OrderDelivery 명령
 피자제작시작 입력
 ```
 http PATCH localhost:8088/orderDeliveries/1 state="PizzaProductionStarted"
@@ -131,12 +134,12 @@ http PATCH localhost:8088/orderDeliveries/1 state="DeliveryStarted"
 http PATCH localhost:8088/orderDeliveries/1 state="DeliveryCompleted"
 ```
 
-### 주문 취소
+### 주문 취소 명령
 ```
 http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 ```
 
-## 폴리글랏 퍼시스턴스
+## 폴리글랏 퍼시스턴스 적용
 쿠폰이력관리서비스의 DB 설정을 "H2 --> Mongo" 로 변경하여 적용함  (POM.xml,  application.yaml)
 ```
 <!--		<dependency>-->
