@@ -132,14 +132,9 @@ http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 소스코드 붙여넣기
 ```
 
-## 폴리글랏 퍼시스턴스
-간략한 설명 작성
-```
-소스코드 붙여넣기
-```
+## 폴리글랏 퍼시스턴스 & 프로그래밍
 
-## 폴리글랏 프로그래밍
-새로 추가한 쿠폰 관리서비스 중 "CouponHistoryManagement" 서비스의 DB를 Mongo 로 변경 설정함
+1) 새로 추가한 쿠폰 관리서비스 중 "CouponHistoryManagement" 의 DB를 "H2 -> Mongo" 로 변경 설정함 (POM.xml)
 <!--		<dependency>-->
 <!--			<groupId>com.h2database</groupId>-->
 <!--			<artifactId>h2</artifactId>-->
@@ -155,7 +150,32 @@ http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 			<groupId>org.mongodb</groupId>
 			<artifactId>bson</artifactId>
 		</dependency>
+		
+2) 쿠폰 관리서비스 중 "CouponHistoryManagement" 의 DB를 "H2 -> Mongo" 설정 내역 (application.yaml)
 
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017
+      database: admin
+      username: sjh
+      password: sjh
+  profiles: default
+#  jpa:
+#    properties:
+#      hibernate:
+#        show_sql: true
+#        format_sql: true
+~~~
+#  h2:
+#    console:
+#      enabled: true
+logging:
+  level:
+#    org.hibernate.type: trace
+    org.springframework.cloud: debug
+server:
+  port: 8087
 
 ## 동기식 호출과 Fallback 처리
 간략한 설명 작성
