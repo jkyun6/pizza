@@ -57,7 +57,7 @@
 ### 07. 개인과제 (추가 개발)
 1) 주문배달 완료 이벤트 발생시 쿠폰을 발행한다
 2) 쿠폰발생 이력을 기록한다.
-![image](https://user-images.githubusercontent.com/69283705/97520837-7f5af180-19df-11eb-9952-96e5e963cd9a.png)
+![image](https://user-images.githubusercontent.com/69283705/97536919-42075b80-1a01-11eb-8c94-170af7d29695.png)
 
 ### 1차 모형 기능적/비기능적 요구사항을 만족하는지 검증
 1. 기능적 요구사항 
