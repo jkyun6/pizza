@@ -199,9 +199,52 @@ public class PizzaOrderManagementApplication {
 ```
 
 ## 비동기식 호출 / 시간적 디커플링 / 장애격리 / 최종 (Eventual) 일관성 테스트
-간략한 설명 작성
+1) 피자주문 (결제승인)이 완료되면 Kafka 를 통해 이벤트를 수신하여 피자주문배달서비스를 처리하도록 구현함
+2) pub/sub 비동기방식으로 호출하여 Eventual Consistency를 보장함
 ```
-소스코드 붙여넣기
+package pizza;
+
+import org.springframework.beans.BeanUtils;
+import pizza.config.kafka.KafkaProcessor;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Service;
+
+import java.text.MessageFormat;
+import java.time.LocalDateTime;
+
+@Service
+public class PolicyHandler{
+
+    @Autowired OrderDeliveryRepository orderDeliveryRepository;
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void onStringEventListener(@Payload String eventString){
+
+    }
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void wheneverPaymentApproved_OrderPlace(@Payload PaymentApproved paymentApproved){
+
+        if(paymentApproved.isMe()){
+            System.out.println("##### listener OrderPlace : " + paymentApproved.toJson());
+            OrderDelivery orderDelivery = new OrderDelivery();
+            BeanUtils.copyProperties(paymentApproved, orderDelivery);
+            orderDelivery.setId(paymentApproved.getOrderId());
+            orderDelivery.setOrderState("PizzaProductionReady");
+            orderDelivery.setPaymentDate(paymentApproved.getTimestamp());
+            orderDelivery.setLastEventDate(paymentApproved.getTimestamp());
+            System.out.println("##### Command [StartPizzaProduction] activated by PolicyHandler");
+            System.out.println(MessageFormat.format("###### /{0}/{1}/{2}/{3}/"
+                    , orderDelivery.getId(), orderDelivery.getCustomerId(), orderDelivery.getAddress(), orderDelivery.getLastEventDate()));
+            orderDeliveryRepository.save(orderDelivery);
+        }
+    }
+
+}
 ```
 # 운영
 
