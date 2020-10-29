@@ -250,17 +250,6 @@ public class PolicyHandler{
 
 }
 ```
-# 운영
-
-
-## 동기식 호출 / 서킷 브레이킹 / 장애 격리
-간략한 설명 작성
-```
-소스코드 붙여넣기
-```
-
-### 오토 스케일 아웃
-k8s hpa를 활용한 auto scaling
 
 ###### deployment.yaml 설정
 ```
@@ -279,23 +268,8 @@ spec:
             requests:
               cpu: 200m
 ```
-1. hpa 생성
-
-## 무정지 배포
-간략한 설명 작성
-```
-소스코드 붙여넣기
-```
-# deployment.yaml 의 readiness probe 의 설정:
 
 
-
-
-
-
-
-
-# 평가항목
 ## Saga
 orderCanceled에서 paymentCancel로 pub 후 PaymentHistory 변경
 ```
@@ -395,6 +369,7 @@ spring:
 server:
   port: 8080
  ```
+# 운영
 
 ## Deploy/Pipeline
 PizzaOrderManagement GITHUB에 신규 파일 추가
