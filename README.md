@@ -133,6 +133,7 @@ http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 
 ## 폴리글랏 퍼시스턴스
 쿠폰이력관리서비스의 DB 설정을 "H2 --> Mongo" 로 변경하여 적용함  (POM.xml,  application.yaml)
+```
 <!--		<dependency>-->
 <!--			<groupId>com.h2database</groupId>-->
 <!--			<artifactId>h2</artifactId>-->
@@ -167,8 +168,6 @@ logging:
 #    org.hibernate.type: trace
     org.springframework.cloud: debug
 ```
-소스코드 붙여넣기
-```
 
 ## 폴리글랏 프로그래밍
 간략한 설명 작성
@@ -178,6 +177,7 @@ logging:
 
 ## 동기식 호출과 Fallback 처리
 1)피자주문서비스 <--> 피자결제서비스는 req/resp 방식으로 아키텍쳐를 구성함 (결제가 완료되어야 주문이 완료될 수 있도록 동기식으로 구현)
+```
 package pizza;
 import pizza.config.kafka.KafkaProcessor;
 import org.springframework.boot.SpringApplication;
@@ -196,9 +196,6 @@ public class PizzaOrderManagementApplication {
         applicationContext = SpringApplication.run(PizzaOrderManagementApplication.class, args);
     }
 }
-
-```
-소스코드 붙여넣기
 ```
 
 ## 비동기식 호출 / 시간적 디커플링 / 장애격리 / 최종 (Eventual) 일관성 테스트
