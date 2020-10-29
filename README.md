@@ -52,12 +52,11 @@
 ![08 팀과제최종](https://user-images.githubusercontent.com/34112237/97229777-34dd4780-181c-11eb-9cff-c61059a46bd8.PNG)
 
 ### 06. 팀과제최종(영어)
-1) 주문배달 완료 이벤트 발생시 쿠폰을 발행한다
-2) 쿠폰발생 이력을 기록한다.
-
 ![09 팀과제최종영어](https://user-images.githubusercontent.com/34112237/97229782-36a70b00-181c-11eb-9417-f3c387f84689.PNG)
 
 ### 07. 개인과제 (추가 개발)
+1) 주문배달 완료 이벤트 발생시 쿠폰을 발행한다
+2) 쿠폰발생 이력을 기록한다.
 ![image](https://user-images.githubusercontent.com/69283705/97520837-7f5af180-19df-11eb-9952-96e5e963cd9a.png)
 
 ### 1차 모형 기능적/비기능적 요구사항을 만족하는지 검증
