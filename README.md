@@ -215,7 +215,34 @@ orderCanceled에서 paymentCancel로 pub 후 PaymentHistory 변경
 (그림. 모델에서 각 event 표시, 저장 로직 표시)
 
 ## Correlation
-- Correlation key saga cqrs 자동 득점
+- 주문 취소 이벤트 발생시 결제처리가 되지 않도록 주문 취소 정보를 Update 해줌
+
+@Service
+public class PolicyHandler{
+    @Autowired
+    private PaymentHistoryRepository paymentHistoryRepository;
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void onStringEventListener(@Payload String eventString){
+
+    }
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void wheneverOrderCanceled_PaymentCancel(@Payload OrderCanceled orderCanceled){
+        if(orderCanceled.isMe()){
+            System.out.println("##### listener PaymentCancel : " + orderCanceled.toJson());
+            // do paymentCancel action
+            paymentHistoryRepository.findById(orderCanceled.getId()).ifPresent((paymentHistory) -> {
+                paymentHistory.setState(orderCanceled.getState());
+                paymentHistoryRepository.save(paymentHistory);
+            });
+            System.out.println(MessageFormat.format("%%% $$$ Request for billing service(External) /OrderId:{0}/CustomerId:{1}/PaymentMethod:{2}/Price:{3}/"
+                    , orderCanceled.getId(), orderCanceled.getCustomerId(), orderCanceled.getPaymentMethod(), orderCanceled.getPrice()));
+        }
+    }
+
+}
+
 
 ## Req/Resp
 - 
