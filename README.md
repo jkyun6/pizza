@@ -152,8 +152,6 @@ http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 		</dependency>
 		
 2) 쿠폰 관리서비스 중 "CouponHistoryManagement" 의 DB를 "H2 -> Mongo" 설정 내역 (application.yaml)
-
-소스코드 붙여넣기
 spring:
   data:
     mongodb:
@@ -177,6 +175,7 @@ logging:
     org.springframework.cloud: debug
 server:
   port: 8087
+
 
 
 ## 동기식 호출과 Fallback 처리
