@@ -94,18 +94,6 @@
 ## 구현 결과 - 프로젝트 목록
 ![image](https://user-images.githubusercontent.com/69283705/97531829-614dbb00-19f8-11eb-8242-c7339b874675.png)
 
-## 실행 결과
-![CancelLog(External request)](https://user-images.githubusercontent.com/34112237/97390068-4b1ffc00-191f-11eb-98c2-563bed04de5f.png)
-![CancelMessage](https://user-images.githubusercontent.com/34112237/97390071-4d825600-191f-11eb-88e3-3f777e4ed091.png)
-![CancelSTEP01-POST](https://user-images.githubusercontent.com/34112237/97390075-4fe4b000-191f-11eb-92fb-300535fc0f18.png)
-![CancelSTEP02-PATCH](https://user-images.githubusercontent.com/34112237/97390078-51ae7380-191f-11eb-8543-8b3fa9aefb1b.png)
-![CoreMessage](https://user-images.githubusercontent.com/34112237/97390086-5541fa80-191f-11eb-89db-e092a9e962ec.png)
-![CoreSTEP01-POST](https://user-images.githubusercontent.com/34112237/97390090-58d58180-191f-11eb-910a-6c80dae95fa7.png)
-![CoreSTEP02-PATCH](https://user-images.githubusercontent.com/34112237/97390093-5b37db80-191f-11eb-9ca8-2f49d30cfc8f.png)
-![CoreSTEP03-PATCH](https://user-images.githubusercontent.com/34112237/97390100-5e32cc00-191f-11eb-9f8e-2c28650b65cc.png)
-![CoreSTEP04-PATCH](https://user-images.githubusercontent.com/34112237/97390106-60952600-191f-11eb-88db-5494b8a5c584.png)
-
-
 ## 서비스 호출
 ### Pizza Order 사용법
 주문
@@ -139,7 +127,19 @@ http PATCH localhost:8088/orderDeliveries/1 state="DeliveryCompleted"
 http PATCH localhost:8088/pizzaOrders/1 state="CANCEL"
 ```
 
-## 폴리글랏 퍼시스턴스 적용
+## 실행 결과
+![CancelLog(External request)](https://user-images.githubusercontent.com/34112237/97390068-4b1ffc00-191f-11eb-98c2-563bed04de5f.png)
+![CancelMessage](https://user-images.githubusercontent.com/34112237/97390071-4d825600-191f-11eb-88e3-3f777e4ed091.png)
+![CancelSTEP01-POST](https://user-images.githubusercontent.com/34112237/97390075-4fe4b000-191f-11eb-92fb-300535fc0f18.png)
+![CancelSTEP02-PATCH](https://user-images.githubusercontent.com/34112237/97390078-51ae7380-191f-11eb-8543-8b3fa9aefb1b.png)
+![CoreMessage](https://user-images.githubusercontent.com/34112237/97390086-5541fa80-191f-11eb-89db-e092a9e962ec.png)
+![CoreSTEP01-POST](https://user-images.githubusercontent.com/34112237/97390090-58d58180-191f-11eb-910a-6c80dae95fa7.png)
+![CoreSTEP02-PATCH](https://user-images.githubusercontent.com/34112237/97390093-5b37db80-191f-11eb-9ca8-2f49d30cfc8f.png)
+![CoreSTEP03-PATCH](https://user-images.githubusercontent.com/34112237/97390100-5e32cc00-191f-11eb-9f8e-2c28650b65cc.png)
+![CoreSTEP04-PATCH](https://user-images.githubusercontent.com/34112237/97390106-60952600-191f-11eb-88db-5494b8a5c584.png)
+
+
+## 폴리글랏 - 퍼시스턴스 
 쿠폰이력관리서비스의 DB 설정을 "H2 --> Mongo" 로 변경하여 적용함  (POM.xml,  application.yaml)
 ```
 <!--		<dependency>-->
@@ -177,7 +177,7 @@ logging:
     org.springframework.cloud: debug
 ```
 
-## 폴리글랏 프로그래밍
+## 폴리글랏 - 프로그래밍
 - 개발 Language나 DB로 Polyglot 을 구현할 수 있음(본 프로젝트에서는 H2,Mongo DB를 적용함)
 ```
 (폴리그랏 퍼시스턴스 참조)
