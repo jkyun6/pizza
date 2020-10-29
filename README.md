@@ -299,6 +299,20 @@ spec:
 # 평가항목
 ## Saga
 orderCanceled에서 paymentCancel로 pub 후 PaymentHistory 변경
+```
+    @StreamListener(KafkaProcessor.INPUT)
+    public void wheneverOrderCanceled_PaymentCancel(@Payload OrderCanceled orderCanceled){
+        if(orderCanceled.isMe()){
+            System.out.println("##### listener PaymentCancel : " + orderCanceled.toJson());
+            // do paymentCancel action
+            paymentHistoryRepository.findById(orderCanceled.getId()).ifPresent((paymentHistory) -> {
+                paymentHistory.setState(orderCanceled.getState());
+                paymentHistoryRepository.save(paymentHistory);
+            });
+            System.out.println(MessageFormat.format("%%% $$$ Request for billing service(External) /OrderId:{0}/CustomerId:{1}/PaymentMethod:{2}/Price:{3}/"
+                    , orderCanceled.getId(), orderCanceled.getCustomerId(), orderCanceled.getPaymentMethod(), orderCanceled.getPrice()));
+        }
+```
 
 ## CQRS
 ![image](https://user-images.githubusercontent.com/34112237/97382926-c1b4fd80-190f-11eb-9ccd-1d12a7729e1d.png)
