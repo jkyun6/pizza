@@ -54,6 +54,9 @@
 ### 06. 팀과제최종(영어)
 ![09 팀과제최종영어](https://user-images.githubusercontent.com/34112237/97229782-36a70b00-181c-11eb-9417-f3c387f84689.PNG)
 
+### 07. 개인과제 (추가 개발)
+https://github.com/jkyun6/pizza/issues/1#issue-731957860
+
 ### 1차 모형 기능적/비기능적 요구사항을 만족하는지 검증
 1. 기능적 요구사항 
     1. 고객이 메뉴를 주문한다 (OK)
